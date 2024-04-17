@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quran/controllers/home_controller.dart';
 import 'package:quran/views/downloads_screen/downloads_screen.dart';
+import 'package:quran/views/settings_screen/settings_screen.dart';
 import '../control_play_audio/control_play_audio.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -36,7 +37,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 } else if (v == 1) {
                   Get.toNamed(DownloadsScreen.routeName);
                 } else {
-                  // Get.toNamed(SettingsScreen.routeName);
+                  Get.toNamed(SettingsScreen.routeName);
                 }
               },
               items: [

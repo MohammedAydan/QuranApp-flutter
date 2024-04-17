@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:quran/services/theme_service.dart';
 
 class ThemeModeButton extends StatelessWidget {
   const ThemeModeButton({super.key}); // Add Key parameter
@@ -19,16 +20,7 @@ class ThemeModeButton extends StatelessWidget {
         width: 40, // Fixed width to ensure consistent size
         height: 40, // Fixed height to ensure consistent size
         child: IconButton(
-          onPressed: () {
-            final val = box.read("theme");
-            if (val == null || val == "dark") {
-              box.write("theme", "light");
-              Get.changeThemeMode(ThemeMode.light);
-            } else {
-              box.write("theme", "dark");
-              Get.changeThemeMode(ThemeMode.dark);
-            }
-          },
+          onPressed: () => ThemeService.changeTheme(),
           icon: const Icon(Icons.dark_mode),
         ),
       ),

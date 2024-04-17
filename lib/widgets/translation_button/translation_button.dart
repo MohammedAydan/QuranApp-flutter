@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:quran/controllers/home_controller.dart';
+import 'package:quran/services/lang_service.dart';
 
 class TranslationButton extends StatelessWidget {
   const TranslationButton({super.key}); // Use Key? key
 
   @override
   Widget build(BuildContext context) {
-    final box = GetStorage(); // Initialize GetStorage
 
     return Container(
       width: 40,
@@ -19,16 +16,7 @@ class TranslationButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
       ),
       child: IconButton(
-        onPressed: () {
-          if (Get.locale == null || Get.locale!.languageCode.contains("en")) {
-            box.write("locale", "ar");
-            Get.updateLocale(const Locale("ar"));
-          } else if (Get.locale!.languageCode == "ar") {
-            box.write("locale", "en");
-            Get.updateLocale(const Locale("en"));
-          }
-          Get.find<HomeController>().getSuwar();
-        },
+        onPressed: () => LangService.changeLang(),
         icon: const Icon(Icons.language_rounded),
       ),
     );

@@ -1,6 +1,9 @@
+import 'dart:async';
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get/get.dart';
@@ -47,7 +50,17 @@ class HomeController extends GetxController {
     try {
       List<String> urls = suwar.map((e) => apis.getSuraUrl(e.id!)).toList();
       await player.open(
-        Playlist(audios: urls.map((e) => Audio.network(e)).toList()),
+        Playlist(
+            audios: urls
+                .map((e) => Audio.network(e,
+                    cached: true,
+                    metas: Metas(
+                      id: suwar[urls.indexOf(e)].id.toString(),
+                      title: suwar[urls.indexOf(e)].name.toString(),
+                      artist: "Yasser Al-Dosari - الشيخ ياسر الدوسري",
+                      image: const MetasImage.asset("assets/quran-app.png"),
+                    )))
+                .toList()),
         autoStart: false,
         showNotification: true,
         playInBackground: PlayInBackground.enabled,
@@ -85,6 +98,7 @@ class HomeController extends GetxController {
         id: selectedSura?.id.toString(),
         title: sura.name,
         artist: "Yasser Al-Dosari - الشيخ ياسر الدوسري",
+        image: const MetasImage.asset("assets/quran-app.png"),
       ),
       showNotifications: true,
     );

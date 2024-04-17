@@ -71,9 +71,19 @@ class AudioCard extends StatelessWidget {
   Widget trailing() {
     if (isSelected) {
       if (controller.playing) {
-        return const Icon(Icons.pause_rounded, size: 23);
+        return GestureDetector(
+          onTap: () {
+            controller.resumeOrPause();
+          },
+          child: const Icon(Icons.pause_rounded, size: 23),
+        );
       } else {
-        return const Icon(Icons.play_arrow_rounded, size: 23);
+        return GestureDetector(
+          onTap: () {
+            controller.resumeOrPause();
+          },
+          child: const Icon(Icons.play_arrow_rounded, size: 23),
+        );
       }
     }
     return const Icon(Icons.play_arrow_rounded, size: 23);

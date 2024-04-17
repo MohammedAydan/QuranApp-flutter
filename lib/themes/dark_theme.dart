@@ -7,6 +7,7 @@ var darkTheme = ThemeData.dark(useMaterial3: true).copyWith(
   appBarTheme: const AppBarTheme(
     backgroundColor: Color.fromARGB(255, 18, 18, 18),
     elevation: 0,
+    surfaceTintColor: Color.fromARGB(255, 73, 73, 73),
     iconTheme: IconThemeData(color: Colors.white),
     titleTextStyle: TextStyle(
       color: Colors.white,

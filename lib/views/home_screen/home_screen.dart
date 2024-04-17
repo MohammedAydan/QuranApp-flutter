@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("QURAN".tr),
+            title: Text("QuranApp".tr),
             actions: const [
               SizedBox(
                 width: 10,
